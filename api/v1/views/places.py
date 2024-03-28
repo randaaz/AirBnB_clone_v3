@@ -17,9 +17,9 @@ def l_p_of_city(city_id):
     city_obj = [obj.to_dict() for obj in a_cities if obj.id == city_id]
     if city_obj == []:
         abort(404)
-    l_places = [obj.to_dict() for obj in storage.all("Place").values()
+    lsst_places = [obj.to_dict() for obj in storage.all("Place").values()
                    if city_id == obj.city_id]
-    return jsonify(l_places)
+    return jsonify(lsst_places)
 
 
 @app_views.route('/places/<place_id>', methods=['GET'])
