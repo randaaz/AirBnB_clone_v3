@@ -108,12 +108,7 @@ class DBStorage:
 
     def count(self, cls=None):
         '''
-        Counts the number of instances of a specified class or
-	all classes if no class is provided.
-        Args:
-            cls (type): Optional. Class whose instances are to be counted.
-        Returns:
-            int: Total number of instances of the specified class or all classes.
+        Counts the number of instances of a specified class
         '''
         o_dict = models.storage.all(cls)
         return len(o_dict)

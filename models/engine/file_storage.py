@@ -101,7 +101,7 @@ class FileStorage:
         Args:
             cls (type): Optional. Class whose instances are to be counted.
         Returns:
-            int: Total number of instances of the specified class or all classes.
+            int: Total number of instances of the specified class.
         '''
         obj_dict = self.all(cls)
         return len(obj_dict)
