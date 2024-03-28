@@ -22,7 +22,7 @@ def tear(self):
 
 
 @app.errorhandler(404)
-def n_found(error):
+def not_found(error):
     ''' handles 404 error '''
     return make_response(jsonify({'error': 'Not found'}), 404)
 
