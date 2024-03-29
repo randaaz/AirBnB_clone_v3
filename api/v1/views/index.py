@@ -11,7 +11,7 @@ from models import storage
 @app_views.route("/status", methods=['GET'], strict_slashes=False)
 def status():
     """
-    status route
+    status
     """
     data = {
         "status": "OK"
