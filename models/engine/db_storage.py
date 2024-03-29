@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-    Contains the class DBStorage
+    Define class DatabaseStorage
 '''
 from os import getenv
 from sqlalchemy import create_engine, MetaData
@@ -13,14 +13,14 @@ from models.base_model import Base
 
 class DBStorage:
     '''
-        interaacts with the MySQL database
+        Create SQLalchemy database
     '''
     __engine = None
     __session = None
 
     def __init__(self):
         '''
-            Instantiate a DBStorage object
+            Create engine and link to MySQL databse (hbnb_dev, hbnb_dev_db)
         '''
         user = getenv("HBNB_MYSQL_USER")
         pwd = getenv("HBNB_MYSQL_PWD")
@@ -57,26 +57,26 @@ class DBStorage:
 
     def new(self, obj):
         '''
-            add the object to the current database session
+            Add object to current database session
         '''
         self.__session.add(obj)
 
     def save(self):
         '''
-            commit all changes of the current database session
+            Commit all changes of current database session
         '''
         self.__session.commit()
 
     def delete(self, obj=None):
         '''
-            delete from the current database session obj if not None
+            Delete from current database session
         '''
         if obj is not None:
             self.__session.delete(obj)
 
     def reload(self):
         '''
-            reloads data from the database
+            Commit all changes of current database session
         '''
         self.__session = Base.metadata.create_all(self.__engine)
         factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
@@ -85,30 +85,35 @@ class DBStorage:
 
     def close(self):
         '''
-            call remove() method on the private session attribute
+            Remove private session attribute
         '''
         self.__session.close()
 
     def get(self, cls, id):
         '''
-        Retrieves an instance based on the provided class and ID.
+        gets an object
         Args:
-            cls (type): Class of the instance to retrieve.
-            id (str): ID of the instance to retrieve.
+            cls (str): class name
+            id (str): object ID
         Returns:
-            object: The instance if found, otherwise returns None.
+            an object based on class name and its ID
         '''
-        o_dict = models.storage.all(cls)
-        for i, j in o_dict.items():
+        obj_dict = models.storage.all(cls)
+        for k, v in obj_dict.items():
             matchstring = cls + '.' + id
-            if i == matchstring:
-                return j
+            if k == matchstring:
+                return v
 
         return None
 
     def count(self, cls=None):
         '''
-        Counts the number of instances of a specified class
+        counts number of objects of a class (if given)
+        Args:
+            cls (str): class name
+        Returns:
+            number of objects in class, if no class name given
+            return total number of objects in database
         '''
-        o_dict = models.storage.all(cls)
-        return len(o_dict)
+        obj_dict = models.storage.all(cls)
+        return len(obj_dict)
