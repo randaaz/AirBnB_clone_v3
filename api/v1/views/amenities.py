@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-route for handling Amenity
+route for handling Amenity.
 """
 from flask import jsonify, abort, request
 from api.v1.views import app_views, storage
