@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-route for handling State objects
+route for handling State objects.
 """
 from flask import jsonify, abort, request
 from api.v1.views import app_views, storage
