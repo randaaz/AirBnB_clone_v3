@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-route for handling Amenity objects and operations
+route for handling Amenity
 """
 from flask import jsonify, abort, request
 from api.v1.views import app_views, storage
@@ -11,7 +11,6 @@ from models.amenity import Amenity
 def amenity_get_all():
     """
     retrieves all Amenity objects
-    :return: json of all states
     """
     am_list = []
     am_obj = storage.all("Amenity")
@@ -25,7 +24,6 @@ def amenity_get_all():
 def amenity_create():
     """
     create amenity route
-    :return: newly created amenity obj
     """
     am_json = request.get_json(silent=True)
     if am_json is None:
@@ -46,8 +44,6 @@ def amenity_create():
 def amenity_by_id(amenity_id):
     """
     gets a specific Amenity object by ID
-    :param amenity_id: amenity object id
-    :return: state obj with the specified id or error
     """
 
     fetched_obj = storage.get("Amenity", str(amenity_id))
@@ -63,8 +59,6 @@ def amenity_by_id(amenity_id):
 def amenity_put(amenity_id):
     """
     updates specific Amenity object by ID
-    :param amenity_id: amenity object ID
-    :return: amenity object and 200 on success, or 400 or 404 on failure
     """
     am_json = request.get_json(silent=True)
     if am_json is None:
@@ -84,8 +78,6 @@ def amenity_put(amenity_id):
 def amenity_delete_by_id(amenity_id):
     """
     deletes Amenity by id
-    :param amenity_id: Amenity object id
-    :return: empty dict with 200 or 404 if not found
     """
 
     fetched_obj = storage.get("Amenity", str(amenity_id))
