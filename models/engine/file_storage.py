@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-    Contains the FileStorage class
+    Define class FileStorage
 '''
 import json
 import models
@@ -8,14 +8,14 @@ import models
 
 class FileStorage:
     '''
-        serializes instances to a JSON file & deserializes back to instances
+        Serializes instances to JSON file and deserializes to JSON file.
     '''
     __file_path = "file.json"
     __objects = {}
 
     def all(self, cls=None):
         '''
-            returns the dictionary __objects
+            Return the dictionary
         '''
         new_dict = {}
         if cls is None:
@@ -31,7 +31,9 @@ class FileStorage:
 
     def new(self, obj):
         '''
-            sets in __objects the obj with key <obj class name>.id
+            Set in __objects the obj with key <obj class name>.id
+            Aguments:
+                obj : An instance object.
         '''
         key = str(obj.__class__.__name__) + "." + str(obj.id)
         value_dict = obj
@@ -39,7 +41,7 @@ class FileStorage:
 
     def save(self):
         '''
-            serializes __objects to the JSON file (path: __file_path)
+            Serializes __objects attribute to JSON file.
         '''
         objects_dict = {}
         for key, val in FileStorage.__objects.items():
@@ -50,7 +52,7 @@ class FileStorage:
 
     def reload(self):
         '''
-            deserializes the JSON file to __objects
+            Deserializes the JSON file to __objects.
         '''
         try:
             with open(FileStorage.__file_path, encoding="UTF8") as fd:
@@ -64,7 +66,7 @@ class FileStorage:
 
     def delete(self, obj=None):
         '''
-        delete obj from __objects if it’s inside
+        Deletes an obj
         '''
         if obj is not None:
             key = str(obj.__class__.__name__) + "." + str(obj.id)
@@ -73,35 +75,35 @@ class FileStorage:
 
     def close(self):
         '''
-        call reload() method for deserializing the JSON file to objects
+        Deserialize JSON file to objects
         '''
         self.reload()
 
     def get(self, cls, id):
         '''
-        Retrieves an instance based on the provided class and ID.
+        gets an object
         Args:
-            cls (type): Class of the instance to retrieve.
-            id (str): ID of the instance to retrieve.
+            cls (str): class name
+            id (str): object ID
         Returns:
-            object: The instance if found, otherwise returns None.
+            an object based on class name and its ID
         '''
         obj_dict = self.all(cls)
-        for i, j in obj_dict.items():
+        for k, v in obj_dict.items():
             matchstring = cls + '.' + id
-            if i == matchstring:
-                return j
+            if k == matchstring:
+                return v
 
         return None
 
     def count(self, cls=None):
         '''
-        Counts the number of instances of a specified class or
-        all classes if no class is provided.
+        counts number of objects in a class (if given)
         Args:
-            cls (type): Optional. Class whose instances are to be counted.
+            cls (str): class name
         Returns:
-            int: Total number of instances of the specified class.
+            number of objects in class, if no class name given
+            return total number of objects in database
         '''
         obj_dict = self.all(cls)
         return len(obj_dict)
