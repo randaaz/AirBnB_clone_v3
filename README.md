@@ -2,7 +2,10 @@
 
 ## Project Overview
 
-This project is a RESTful API implementation for an AirBnB clone using Python and Flask. It is part of the back-end development curriculum and is intended to be completed in teams of two people. The project duration starts on Mar 28, 2024, at 6:00 AM and must be concluded by Apr 2, 2024, at 6:00 AM. 
+This project is a RESTful API implementation for an AirBnB clone using Python and Flask.
+It is part of the back-end development curriculum and is intended to
+be completed in teams of two people. The project duration starts on Mar 28,
+2024, at 6:00 AM and must be concluded by Apr 2, 2024, at 6:00 AM.
 
 ### Team Members:
 - Rasha Saeed
