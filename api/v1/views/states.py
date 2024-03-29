@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-route for handling State objects and operations
+route for handling State objects
 """
 from flask import jsonify, abort, request
 from api.v1.views import app_views, storage
@@ -11,7 +11,6 @@ from models.state import State
 def state_get_all():
     """
     retrieves all State objects
-    :return: json of all states
     """
     state_list = []
     state_obj = storage.all("State")
@@ -25,7 +24,6 @@ def state_get_all():
 def state_create():
     """
     create state route
-    :return: newly created state obj
     """
     state_json = request.get_json(silent=True)
     if state_json is None:
@@ -45,8 +43,6 @@ def state_create():
 def state_by_id(state_id):
     """
     gets a specific State object by ID
-    :param state_id: state object id
-    :return: state obj with the specified id or error
     """
 
     fetched_obj = storage.get("State", str(state_id))
@@ -61,8 +57,6 @@ def state_by_id(state_id):
 def state_put(state_id):
     """
     updates specific State object by ID
-    :param state_id: state object ID
-    :return: state object and 200 on success, or 400 or 404 on failure
     """
     state_json = request.get_json(silent=True)
     if state_json is None:
@@ -81,9 +75,7 @@ def state_put(state_id):
                  strict_slashes=False)
 def state_delete_by_id(state_id):
     """
-    deletes State by id
-    :param state_id: state object id
-    :return: empty dict with 200 or 404 if not found
+    deletes
     """
 
     fetched_obj = storage.get("State", str(state_id))
