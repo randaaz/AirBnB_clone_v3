@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """
-index
 """
 
 from flask import jsonify
@@ -13,7 +12,6 @@ from models import storage
 def status():
     """
     status route
-    :return: response with json
     """
     data = {
         "status": "OK"
@@ -29,7 +27,6 @@ def status():
 def stats():
     """
     stats of all objs route
-    :return: json of all objs
     """
     data = {
         "amenities": storage.count("Amenity"),
