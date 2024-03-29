@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Handles I/O
+Handles I/O.
 """
 import json
 from models import base_model, amenity, city, place, review, state, user
