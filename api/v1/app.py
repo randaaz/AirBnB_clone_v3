@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-app Rasha And Rand
+app Rasha And Rand.
 """
 
 from flask import Flask, jsonify
