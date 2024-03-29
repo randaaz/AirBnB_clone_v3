@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-route for handling Place objecte
+route for handling
 """
 from flask import jsonify, abort, request
 from api.v1.views import app_views, storage
@@ -11,7 +11,7 @@ from models.place import Place
                  strict_slashes=False)
 def places_by_city(city_id):
     """
-    retrieves all Place objects by city
+    retrieves all Place objects
     """
     place_list = []
     city_obj = storage.get("City", str(city_id))
@@ -25,7 +25,7 @@ def places_by_city(city_id):
                  strict_slashes=False)
 def place_create(city_id):
     """
-    create place route
+    create place
     """
     place_json = request.get_json(silent=True)
     if place_json is None:
@@ -53,7 +53,7 @@ def place_create(city_id):
                  strict_slashes=False)
 def place_by_id(place_id):
     """
-    gets a specific Place object
+    gets a specific
     """
 
     fetched_obj = storage.get("Place", str(place_id))
@@ -68,7 +68,7 @@ def place_by_id(place_id):
                  strict_slashes=False)
 def place_put(place_id):
     """
-    updates
+    update
     """
     place_json = request.get_json(silent=True)
 
@@ -93,7 +93,7 @@ def place_put(place_id):
                  strict_slashes=False)
 def place_delete_by_id(place_id):
     """
-    deletes
+    delete
     """
 
     fetched_obj = storage.get("Place", str(place_id))
