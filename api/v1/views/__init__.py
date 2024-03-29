@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-view
+view modioul
 """
 
 from flask import Blueprint
