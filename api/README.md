@@ -1,10 +1,9 @@
 # 0x05. AirBnB Clone - RESTful API
 
-In this project, we have implemented a RESTful API for an AirBnB clone application
-using Python and Flask. The API provides endpoints to perform CRUD
-(Create, Read, Update, Delete) operations on various resources such as
-States, Cities, Users, Places, Amenities, Reviews, and the link between
-Place and Amenity objects.
+In this project, we have implemented a RESTful API for an AirBnB clone application using Python and Flask.
+The API provides endpoints to perform CRUD (Create, Read, Update, Delete) operations on various
+resources such as States, Cities, Users, Places, Amenities,
+Reviews, and the link between Place and Amenity objects.
 
 ## Learning Objectives
 
