@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-BaseModel Class of Models Module
+BaseModel Class
 """
 
 import os
@@ -15,7 +15,6 @@ storage_type = os.environ.get('HBNB_TYPE_STORAGE')
 
 """
     Creates instance of Base if storage type is a database
-    If not database storage, uses class Base
 """
 if storage_type == 'db':
     Base = declarative_base()
@@ -26,7 +25,7 @@ else:
 
 class BaseModel:
     """
-        attributes and functions for BaseModel class
+        attributes
     """
 
     if storage_type == 'db':
@@ -37,7 +36,7 @@ class BaseModel:
                             default=datetime.utcnow())
 
     def __init__(self, *args, **kwargs):
-        """instantiation of new BaseModel Class"""
+        """instantiation"""
         self.id = str(uuid4())
         self.created_at = datetime.now()
         if kwargs:
@@ -56,21 +55,21 @@ class BaseModel:
 
     def bm_update(self, name, value):
         """
-            updates the basemodel and sets the correct attributes
+            updates
         """
         setattr(self, name, value)
         if storage_type != 'db':
             self.save()
 
     def save(self):
-        """updates attribute updated_at to current time"""
+        """updates"""
         if storage_type != 'db':
             self.updated_at = datetime.now()
         models.storage.new(self)
         models.storage.save()
 
     def to_json(self):
-        """returns json representation of self"""
+        """returns json"""
         bm_dict = {}
         for key, value in (self.__dict__).items():
             if (self.__is_serializable(value)):
@@ -85,12 +84,12 @@ class BaseModel:
         return bm_dict
 
     def __str__(self):
-        """returns string type representation of object instance"""
+        """returns string type """
         class_name = type(self).__name__
         return '[{}] ({}) {}'.format(class_name, self.id, self.__dict__)
 
     def delete(self):
         """
-            deletes current instance from storage
+            deletes
         """
         self.delete()

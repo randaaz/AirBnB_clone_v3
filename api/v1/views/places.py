@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-route for handling Place objects and operations
+route for handling Place objecte
 """
 from flask import jsonify, abort, request
 from api.v1.views import app_views, storage
@@ -12,7 +12,6 @@ from models.place import Place
 def places_by_city(city_id):
     """
     retrieves all Place objects by city
-    :return: json of all Places
     """
     place_list = []
     city_obj = storage.get("City", str(city_id))
@@ -27,7 +26,6 @@ def places_by_city(city_id):
 def place_create(city_id):
     """
     create place route
-    :return: newly created Place obj
     """
     place_json = request.get_json(silent=True)
     if place_json is None:
@@ -55,9 +53,7 @@ def place_create(city_id):
                  strict_slashes=False)
 def place_by_id(place_id):
     """
-    gets a specific Place object by ID
-    :param place_id: place object id
-    :return: place obj with the specified id or error
+    gets a specific Place object
     """
 
     fetched_obj = storage.get("Place", str(place_id))
@@ -72,9 +68,7 @@ def place_by_id(place_id):
                  strict_slashes=False)
 def place_put(place_id):
     """
-    updates specific Place object by ID
-    :param place_id: Place object ID
-    :return: Place object and 200 on success, or 400 or 404 on failure
+    updates
     """
     place_json = request.get_json(silent=True)
 
@@ -99,9 +93,7 @@ def place_put(place_id):
                  strict_slashes=False)
 def place_delete_by_id(place_id):
     """
-    deletes Place by id
-    :param place_id: Place object id
-    :return: empty dict with 200 or 404 if not found
+    deletes
     """
 
     fetched_obj = storage.get("Place", str(place_id))
