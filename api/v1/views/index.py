@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module for the index view of API v1"""
+"""index"""
 from api.v1.views import app_views
 from flask import jsonify
 from models import storage
@@ -17,14 +17,14 @@ classes = {"users": "User", "places": "Place", "states": "State",
 
 @app_views.route('/status', methods=['GET'])
 def status():
-    ''' Returns the status of the API '''
+    ''' routes to status page '''
     return jsonify({'status': 'OK'})
 
 
 @app_views.route('/stats', methods=['GET'])
 def count():
-    '''retrieves the number'''
-    co_dict = {}
+    '''retrieves the number of each objects by type'''
+    count_dict = {}
     for cls in classes:
-        co_dict[cls] = storage.count(classes[cls])
-    return jsonify(co_dict)
+        count_dict[cls] = storage.count(classes[cls])
+    return jsonify(count_dict)
